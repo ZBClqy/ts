@@ -7,11 +7,19 @@
     "dev": "vite",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx --fix",
+    "lint": "eslint . --ext .vue,.js,.ts,.jsx,.tsx ",
     "format": "prettier --write \"./**/*.{html,vue,ts,js,json,md}\"",
     "lint:style": "stylelint **/*.{html,vue} --custom-syntax postcss-html",
     "prepare": "husky install",
-    "lint-staged": "lint-staged --allow-empty"
+    "lint-staged": "lint-staged --allow-empty",
+    "lint-staged:js": "eslint --ext .js,.jsx,.ts,.tsx "
+
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": "yarn run lint-staged:js",
+    "**/*.{js,jsx,tsx,ts,less,md,json}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "eslint-plugin-prettier": "^4.2.1",
